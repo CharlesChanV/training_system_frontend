@@ -37,6 +37,7 @@ export interface PostProps {
   image?: string;
   createAt: string;
   columnId: number;
+  canChoose: number;
 }
 export const testPost: PostProps[] = [
   {
@@ -45,7 +46,8 @@ export const testPost: PostProps[] = [
     content: '如何经营自己的爱情与婚姻？好的爱情与婚姻需要用一生来维护。拿好这份《青年人恋爱婚姻指南》，在人生路上，抓住爱情与婚姻中那些不经意的瞬间，你的爱情与婚姻，由你自己',
     image: 'https://cn.vuejs.org/images/logo.png',
     createAt: '2020-06-11 10:00:00',
-    columnId: 1
+    columnId: 1,
+    canChoose: 1
   },
   {
     id: 2,
@@ -53,7 +55,8 @@ export const testPost: PostProps[] = [
     content: '对于想要提升学习，未来想要在职场中走的更远的年轻人们来说，学历的提升有助于我们走的更远，今天我们就分享一些名校MBA申请那些事儿，专家解读名校MBA申请攻略',
     image: 'https://pic1.zhimg.com/50/v2-f6994d8229dd3e293b3532479f80d52b_720w.jpg?source=b1f6dc53',
     createAt: '2020-06-12 10:00:00',
-    columnId: 1
+    columnId: 1,
+    canChoose: 1
   },
   {
     id: 3,
@@ -61,7 +64,8 @@ export const testPost: PostProps[] = [
     content: '不同的饮食文化衍生出了不同的菜系，这是一场众人味蕾间的博弈；菜系的变化和生长，每一个普通人都参与其中。川菜的传承与变革，会用什么方式开启新篇章？',
     image: 'https://pic1.zhimg.com/50/v2-938faf36b298a449fcea053d2ddf3d97_720w.jpg?source=b1f6dc53',
     createAt: '2020-06-13 10:00:00',
-    columnId: 1
+    columnId: 1,
+    canChoose: 0
   },
   {
     id: 4,
@@ -69,7 +73,8 @@ export const testPost: PostProps[] = [
     content: '不同的饮食文化衍生出了不同的菜系，这是一场众人味蕾间的博弈；菜系的变化和生长，每一个普通人都参与其中。川菜的传承与变革，会用什么方式开启新篇章？',
     image: 'https://pic1.zhimg.com/50/v2-938faf36b298a449fcea053d2ddf3d97_720w.jpg?source=b1f6dc53',
     createAt: '2020-06-13 10:00:00',
-    columnId: 2
+    columnId: 2,
+    canChoose: 1
   },
   {
     id: 5,
@@ -77,6 +82,7 @@ export const testPost: PostProps[] = [
     content: '不同的饮食文化衍生出了不同的菜系，这是一场众人味蕾间的博弈；菜系的变化和生长，每一个普通人都参与其中。川菜的传承与变革，会用什么方式开启新篇章？',
     image: 'https://pic1.zhimg.com/50/v2-938faf36b298a449fcea053d2ddf3d97_720w.jpg?source=b1f6dc53',
     createAt: '2020-06-13 10:00:00',
-    columnId: 3
+    columnId: 3,
+    canChoose: 0
   }
 ]

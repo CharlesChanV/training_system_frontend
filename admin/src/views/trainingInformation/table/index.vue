@@ -2,13 +2,28 @@
   <div class="test-container">
     <a-alert message="发布的培训信息列表"></a-alert>
     <a-table :columns="columns" :data-source="data">
-      <template #action="{ record }">
+      <template #action="{ record, index }">
+        <a
+          v-if="record.publishStatus == 0"
+          @click="publishInformation(index, 1)"
+        >
+          发布
+        </a>
+        <a v-else @click="publishInformation(index, 0)">取消发布</a>
+        <a-divider type="vertical" />
         <a @click="deleteInformation(record)">删除</a>
       </template>
       <template #expandedRowRender="{ record }">
         <p style="margin: 0">
           {{ record.description }}
         </p>
+      </template>
+      <template #publishStatus="{ record }">
+        <span>
+          <a-tag :color="publishStatusDescription[record.publishStatus].color">
+            {{ publishStatusDescription[record.publishStatus].value }}
+          </a-tag>
+        </span>
       </template>
     </a-table>
   </div>
@@ -22,6 +37,12 @@
     { title: '培训内容', dataIndex: 'content', key: 'content' },
     { title: '联系方式', dataIndex: 'phone', key: 'phone' },
     { title: '邮箱', dataIndex: 'email', key: 'email' },
+    {
+      title: '发布状态',
+      dataIndex: 'publishStatus',
+      key: 'publishStatus',
+      slots: { customRender: 'publishStatus' },
+    },
     {
       title: '操作',
       dataIndex: '',
@@ -39,6 +60,7 @@
       phone: '13524675842',
       email: '12345@qq.com',
       description: '额外信息',
+      publishStatus: 0,
     },
     {
       key: 2,
@@ -48,6 +70,7 @@
       phone: '13524675842',
       email: '12345@qq.com',
       description: '额外信息',
+      publishStatus: 0,
     },
     {
       key: 3,
@@ -57,8 +80,20 @@
       phone: '13524675842',
       email: '12345@qq.com',
       description: '额外信息',
+      publishStatus: 1,
     },
   ]
+
+  const publishStatusDescription = {
+    0: {
+      value: '未发布',
+      color: 'geekblue',
+    },
+    1: {
+      value: '已发布',
+      color: 'green',
+    },
+  }
 
   export default {
     // name: 'TrainerTable',
@@ -66,6 +101,7 @@
       return {
         data,
         columns,
+        publishStatusDescription,
       }
     },
     methods: {
@@ -77,6 +113,11 @@
             break
           }
         }
+      },
+      publishInformation(index, publishStatus) {
+        console.log(index, publishStatus)
+        this.data[index].publishStatus = publishStatus
+        message.success('发布培训信息')
       },
     },
   }

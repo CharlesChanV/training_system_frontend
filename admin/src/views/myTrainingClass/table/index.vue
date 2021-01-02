@@ -5,7 +5,7 @@
       <template #action="{ record }">
         <a @click="deleteClass(record)">删除</a>
         <a-divider type="vertical" />
-        <a @click="showClassDetail(record)">修改培训班信息</a>
+        <a @click="showClassScore(record)">查看学员成绩</a>
       </template>
       <template #expandedRowRender="{ record }">
         <p style="margin: 0">
@@ -13,6 +13,14 @@
         </p>
       </template>
     </a-table>
+    <a-modal
+      title="查看学员成绩"
+      v-model:visible="classScoreVisible"
+      :confirm-loading="confirmLoading"
+      @ok="handleClassScoreOk"
+    >
+      查看学员成绩
+    </a-modal>
   </div>
 </template>
 
@@ -68,6 +76,8 @@
       return {
         data,
         columns,
+        classScoreVisible: false,
+        confirmLoading: false,
       }
     },
     methods: {
@@ -80,9 +90,13 @@
           }
         }
       },
-      showClassDetail(record) {
+      showClassScore(record) {
         console.log(record)
-        message.success('修改培训班信息')
+        message.success('查看培训班学员成绩')
+        this.classScoreVisible = true
+      },
+      handleClassScoreOk() {
+        this.classScoreVisible = false
       },
     },
   }

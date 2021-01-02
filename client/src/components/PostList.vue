@@ -12,6 +12,7 @@
           <p :class="{'col-9': post.image}">{{post.content}}</p>
         </div>
         <span class="text-muted">{{post.createAt}}</span>
+        <div v-if="post.canChoose == 1" class="m-2"><button type="button" class="btn btn-outline-primary el-icon-arrow-right">加入课程</button></div>
       </div>
       <!-- <pre>{{post}}</pre> -->
     </article>

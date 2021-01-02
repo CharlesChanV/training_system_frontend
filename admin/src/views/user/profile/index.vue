@@ -22,6 +22,12 @@
       <a-button type="primary" @click="onSubmit">修改</a-button>
       <a-button style="margin-left: 10px">取消</a-button>
     </a-form-item>
+    <a-form-item label="密码">
+      <a-input v-model:value="password" type="password" />
+    </a-form-item>
+    <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
+      <a-button type="primary" @click="changePassword">修改密码</a-button>
+    </a-form-item>
   </a-form>
 </template>
 <script>
@@ -39,12 +45,18 @@
           phone: '13526535268',
           email: '12312@qq.com',
         },
+        password: '',
       }
     },
     methods: {
       onSubmit() {
         console.log('submit!', this.form)
         message.success('修改成功')
+      },
+      changePassword() {
+        console.log('changePassword!', this.password)
+        message.success('修改成功')
+        this.password = ''
       },
     },
   }

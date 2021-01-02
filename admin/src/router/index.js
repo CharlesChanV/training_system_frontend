@@ -104,6 +104,36 @@ export const asyncRoutes = [
     ],
   },
   {
+    path: '/trainingClass',
+    component: Layout,
+    redirect: '/trainingClass/table',
+    alwaysShow: true,
+    meta: {
+      title: '培训班管理',
+      icon: 'home-4-line',
+    },
+    children: [
+      {
+        path: 'table',
+        name: 'TrainingClassTable',
+        component: () => import('@/views/trainingClass/table'),
+        meta: {
+          title: '培训班列表',
+          icon: 'home-4-line',
+        },
+      },
+      {
+        path: 'add',
+        name: 'TrainingClassAdd',
+        component: () => import('@/views/trainingClass/add'),
+        meta: {
+          title: '培添加训班',
+          icon: 'home-4-line',
+        },
+      },
+    ],
+  },
+  {
     path: '/trainingCourse',
     component: Layout,
     redirect: '/trainingCourse/table',
@@ -176,21 +206,21 @@ export const asyncRoutes = [
     ],
   },
   {
-    path: '/trainingClass',
+    path: '/myTrainingClass',
     component: Layout,
-    redirect: '/trainingClass/table',
+    redirect: '/myTrainingClass/table',
     alwaysShow: true,
     meta: {
-      title: '培训班管理',
+      title: '我的培训班',
       icon: 'home-4-line',
     },
     children: [
       {
         path: 'table',
         name: 'TrainingClassTable',
-        component: () => import('@/views/trainingClass/table'),
+        component: () => import('@/views/myTrainingClass/table'),
         meta: {
-          title: '培训班列表',
+          title: '我的培训班列表',
           icon: 'home-4-line',
         },
       },
