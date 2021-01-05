@@ -217,7 +217,7 @@ export const asyncRoutes = [
     children: [
       {
         path: 'table',
-        name: 'TrainingClassTable',
+        name: 'MyTrainingClassTable',
         component: () => import('@/views/myTrainingClass/table'),
         meta: {
           title: '我的培训班列表',
