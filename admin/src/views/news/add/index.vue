@@ -1,25 +1,16 @@
 <template>
   <a-form :model="form" :label-col="labelCol" :wrapper-col="wrapperCol">
-    <a-form-item label="培训班名称">
+    <a-form-item label="新闻主题">
       <a-input v-model:value="form.name" />
     </a-form-item>
-    <a-form-item label="培训班课程">
-      <a-input v-model:value="form.course" />
+    <a-form-item label="新闻内容">
+      <a-input v-model:value="form.content" />
     </a-form-item>
-    <a-form-item label="开课时间">
-      <a-date-picker
-        v-model:value="form.startTime"
-        show-time
-        type="date"
-        placeholder="选择日期"
-        style="width: 100%"
-      />
+    <a-form-item label="新闻关键字">
+      <a-input v-model:value="form.keyword" />
     </a-form-item>
     <a-form-item label="联系方式">
       <a-input v-model:value="form.phone" />
-    </a-form-item>
-    <a-form-item label="培训班课时">
-      <a-input v-model:value="form.classTimes" />
     </a-form-item>
     <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
       <a-button type="primary" @click="onSubmit">添加</a-button>
@@ -36,10 +27,9 @@
         wrapperCol: { span: 14 },
         form: {
           name: '',
-          course: '',
-          startTime: '',
+          content: '',
+          keyword: '',
           phone: '',
-          classTimes: '',
         },
       }
     },

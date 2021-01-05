@@ -203,6 +203,15 @@ export const asyncRoutes = [
           icon: 'home-4-line',
         },
       },
+      {
+        path: 'add',
+        name: 'NewsAdd',
+        component: () => import('@/views/news/add'),
+        meta: {
+          title: '新增新闻',
+          icon: 'home-4-line',
+        },
+      },
     ],
   },
   {
