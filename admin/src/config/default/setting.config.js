@@ -14,7 +14,9 @@ const setting = {
   transpileDependencies: ['vue-echarts', 'resize-detector'],
   //默认的接口地址 如果是开发环境和生产环境走vab-mock-server，当然你也可以选择自己配置成需要的接口地址
   baseURL:
-    process.env.NODE_ENV === 'development' ? 'mock-server' : 'mock-server',
+    process.env.NODE_ENV === 'development'
+      ? 'https://36c0be719a94.ngrok.io/api/v1/umlwork'
+      : 'mock-server',
   //标题 （包括初次加载雪花屏的标题 页面的标题 浏览器的标题）
   title: '新东莞教育培训机构',
   //标题分隔符
@@ -38,9 +40,11 @@ const setting = {
   //加载时显示文字
   loadingText: '正在加载中...',
   //token名称
-  tokenName: 'accessToken',
+  tokenName: 'token',
+  // tokenName: 'accessToken',
   //token在localStorage、sessionStorage、cookie存储的key的名称
-  tokenTableName: 'accessToken',
+  tokenTableName: 'token',
+  // tokenTableName: 'accessToken',
   //token存储位置localStorage sessionStorage cookie
   storage: 'localStorage',
   //token失效回退到登录页时是否记录本次的路由

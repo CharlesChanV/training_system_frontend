@@ -38,6 +38,7 @@
 </template>
 <script>
   import { message } from 'ant-design-vue'
+  import { createCourse } from '@/api/course'
   export default {
     data() {
       return {
@@ -47,18 +48,22 @@
           courseName: '',
           season: '',
           year: '',
-          content: '',
-          teacher: '',
-          courseTimes: '',
-          startTime: '',
-          phone: '',
+          // content: '',
+          // teacher: '',
+          // courseTimes: '',
+          // startTime: '',
+          // phone: '',
         },
       }
     },
     methods: {
       onSubmit() {
         console.log('submit!', this.form)
-        message.success('添加成功')
+        createCourse(this.form).then((response) => {
+          console.log(response)
+          message.success('添加成功')
+          this.$router.push('/trainingCourse/table')
+        })
       },
     },
   }

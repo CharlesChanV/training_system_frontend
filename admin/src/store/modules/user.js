@@ -70,7 +70,8 @@ const actions = {
    */
   async login({ commit }, userInfo) {
     const { data } = await login(userInfo)
-    const accessToken = data[tokenName]
+    // const accessToken = data[tokenName]
+    const accessToken = data
     if (accessToken) {
       commit('setAccessToken', accessToken)
       const hour = new Date().getHours()
@@ -100,16 +101,20 @@ const actions = {
    */
   async getUserInfo({ commit, dispatch, state }) {
     const { data } = await getUserInfo(state.accessToken)
+    console.log(data)
     if (!data) {
       message.error(`验证失败，请重新登录...`)
       return false
     }
-    let { username, avatar, roles, ability } = data
+    let { username, roleList, ability } = data
+    let roles = roleList
     if (username && roles && Array.isArray(roles)) {
       dispatch('acl/setRole', roles, { root: true })
       if (ability && ability.length > 0)
         dispatch('acl/setAbility', ability, { root: true })
       commit('setUsername', username)
+      let avatar =
+        'https://thirdwx.qlogo.cn/mmopen/vi_32/WPtGnofABQ9amglF5uFtQNnGnd3lhEibiaWC6eD67rLmDDmk7RibydCXoMicdDUJdHJAMcwStxgE6dyk6VEQYrC61w/132'
       commit('setAvatar', avatar)
     } else {
       message.error('用户信息接口异常')

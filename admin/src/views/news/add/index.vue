@@ -1,7 +1,7 @@
 <template>
   <a-form :model="form" :label-col="labelCol" :wrapper-col="wrapperCol">
     <a-form-item label="新闻主题">
-      <a-input v-model:value="form.name" />
+      <a-input v-model:value="form.title" />
     </a-form-item>
     <a-form-item label="新闻内容">
       <a-input v-model:value="form.content" />
@@ -14,13 +14,14 @@
 </template>
 <script>
   import { message } from 'ant-design-vue'
+  import { saveNews } from '@/api/news'
   export default {
     data() {
       return {
         labelCol: { span: 4 },
         wrapperCol: { span: 14 },
         form: {
-          name: '',
+          title: '',
           content: '',
         },
       }
@@ -28,7 +29,10 @@
     methods: {
       onSubmit() {
         console.log('submit!', this.form)
-        message.success('添加成功')
+        saveNews(this.form).then((response) => {
+          message.success(response.message)
+          this.$router.push('/news/table')
+        })
       },
     },
   }

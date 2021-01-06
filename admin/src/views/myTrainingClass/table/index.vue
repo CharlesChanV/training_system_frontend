@@ -12,6 +12,11 @@
           {{ record.description }}
         </p>
       </template>
+      <template #isAnnounce="{ text }">
+        <p style="margin: 0">
+          {{ text == true ? '已确认' : '未确认' }}
+        </p>
+      </template>
     </a-table>
     <a-modal
       title="查看学员成绩"
@@ -26,12 +31,18 @@
 
 <script>
   import { message } from 'ant-design-vue'
+  import { getMyClass } from '@/api/class'
   const columns = [
-    { title: '编号', dataIndex: 'No', key: 'No' },
-    { title: '培训班名称', dataIndex: 'className', key: 'className' },
-    { title: '培训时间', dataIndex: 'classTime', key: 'classTime' },
-    { title: '培训班老师', dataIndex: 'classTeacher', key: 'classTeacher' },
-    { title: '培训班学时', dataIndex: 'classTimes', key: 'classTimes' },
+    { title: '编号', dataIndex: 'id', key: 'id' },
+    { title: '课程ID', dataIndex: 'courseId', key: 'courseId' },
+    { title: '培训师ID', dataIndex: 'teacherId', key: 'teacherId' },
+    { title: '学费', dataIndex: 'tuition', key: 'tuition' },
+    {
+      title: '是否确认开设',
+      dataIndex: 'isAnnounce',
+      key: 'isAnnounce',
+      slots: { customRender: 'isAnnounce' },
+    },
     {
       title: '操作',
       dataIndex: '',
@@ -40,47 +51,56 @@
     },
   ]
 
-  const data = [
-    {
-      key: 1,
-      No: 1,
-      className: '编程教育101班',
-      classTime: '每周五下午16：00-18：00',
-      classTeacher: '李老师',
-      classTimes: 45,
-      description: '额外信息',
-    },
-    {
-      key: 2,
-      No: 2,
-      className: '编程教育202班',
-      classTime: '每周五下午16：00-18：00',
-      classTeacher: '李老师',
-      classTimes: 45,
-      description: '额外信息',
-    },
-    {
-      key: 3,
-      No: 3,
-      className: '编程教育303班',
-      classTime: '每周五下午16：00-18：00',
-      classTeacher: '李老师',
-      classTimes: 45,
-      description: '额外信息',
-    },
-  ]
+  // const data = [
+  //   {
+  //     key: 1,
+  //     No: 1,
+  //     className: '编程教育101班',
+  //     classTime: '每周五下午16：00-18：00',
+  //     classTeacher: '李老师',
+  //     classTimes: 45,
+  //     description: '额外信息',
+  //   },
+  //   {
+  //     key: 2,
+  //     No: 2,
+  //     className: '编程教育202班',
+  //     classTime: '每周五下午16：00-18：00',
+  //     classTeacher: '李老师',
+  //     classTimes: 45,
+  //     description: '额外信息',
+  //   },
+  //   {
+  //     key: 3,
+  //     No: 3,
+  //     className: '编程教育303班',
+  //     classTime: '每周五下午16：00-18：00',
+  //     classTeacher: '李老师',
+  //     classTimes: 45,
+  //     description: '额外信息',
+  //   },
+  // ]
 
   export default {
     // name: 'TrainerTable',
     data() {
       return {
-        data,
+        data: [],
         columns,
         classScoreVisible: false,
         confirmLoading: false,
       }
     },
+    mounted() {
+      this.fetchClassList()
+    },
     methods: {
+      fetchClassList() {
+        getMyClass().then((response) => {
+          message.success(response.message)
+          this.data = response.data
+        })
+      },
       deleteClass(record) {
         for (let i = 0; i < this.data.length; i++) {
           if (this.data[i].key == record.key) {

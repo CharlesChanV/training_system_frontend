@@ -4,7 +4,7 @@
  */
 const path = require('path')
 const {
-  /* baseURL, */
+  baseURL,
   publicPath,
   assetsDir,
   outputDir,
@@ -60,6 +60,18 @@ module.exports = {
       errors: true,
     },
     // 注释掉的地方是前端配置代理访问后端的示例
+    proxy: {
+      [baseURL]: {
+        target: 'https://36c0be719a94.ngrok.io/api/v1/umlwork',
+        changeOrigin: true, // 是否改变域名
+        // ws: true,
+        pathRewrite: {
+          // 路径重写
+          ['^/' + baseURL]: '', // 这个意思就是以api开头的，定向到哪里, 如果你的后边还有路径的话， 会自动拼接上
+        },
+      },
+    },
+    // 注释掉的地方是前端配置代理访问后端的示例
     // proxy: {
     //   [baseURL]: {
     //     target: `http://你的后端接口地址`,
@@ -70,7 +82,7 @@ module.exports = {
     //     },
     //   },
     // },
-    after: mockServer(),
+    // after: mockServer(),
   },
   configureWebpack() {
     return {

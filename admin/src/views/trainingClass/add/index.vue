@@ -10,7 +10,7 @@
       />
     </a-form-item>
     <a-form-item label="学费">
-      <a-input v-model:value="form.tution" />
+      <a-input v-model:value="form.tuition" />
     </a-form-item>
     <a-form-item label="教师ID">
       <a-input v-model:value="form.teacherId" />
@@ -26,6 +26,7 @@
 </template>
 <script>
   import { message } from 'ant-design-vue'
+  import { createClass } from '@/api/class'
   export default {
     data() {
       return {
@@ -33,7 +34,7 @@
         wrapperCol: { span: 14 },
         form: {
           startDate: '',
-          tution: '',
+          tuition: '',
           teacherId: '',
           courseId: '',
         },
@@ -42,7 +43,10 @@
     methods: {
       onSubmit() {
         console.log('submit!', this.form)
-        message.success('添加成功')
+        createClass(this.form).then((response) => {
+          console.log(response)
+          message.success('添加成功')
+        })
       },
     },
   }

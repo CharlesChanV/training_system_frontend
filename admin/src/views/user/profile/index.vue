@@ -22,8 +22,14 @@
       <a-button type="primary" @click="onSubmit">修改</a-button>
       <a-button style="margin-left: 10px">取消</a-button>
     </a-form-item>
-    <a-form-item label="密码">
-      <a-input v-model:value="password" type="password" />
+    <a-form-item label="旧密码">
+      <a-input v-model:value="oldPassword" type="password" />
+    </a-form-item>
+    <a-form-item label="新密码">
+      <a-input v-model:value="newPassword" type="password" />
+    </a-form-item>
+    <a-form-item label="重复新密码">
+      <a-input v-model:value="againPassword" type="password" />
     </a-form-item>
     <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
       <a-button type="primary" @click="changePassword">修改密码</a-button>
@@ -32,6 +38,7 @@
 </template>
 <script>
   import { message } from 'ant-design-vue'
+  import { updatePassword } from '@/api/user'
   export default {
     data() {
       return {
@@ -45,7 +52,9 @@
           phone: '13526535268',
           email: '12312@qq.com',
         },
-        password: '',
+        newPassword: '',
+        againPassword: '',
+        oldPassword: '',
       }
     },
     methods: {
@@ -55,8 +64,19 @@
       },
       changePassword() {
         console.log('changePassword!', this.password)
-        message.success('修改成功')
+        updatePassword({
+          newPassword: this.newPassword,
+          againPassword: this.againPassword,
+          oldPassword: this.oldPassword,
+        }).then((response) => {
+          if (response.code == 9999) {
+            message.error(response.message)
+          } else {
+            message.success(response.message)
+          }
+        })
         this.password = ''
+        this.oldPassword = ''
       },
     },
   }

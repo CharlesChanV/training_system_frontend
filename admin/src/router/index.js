@@ -62,45 +62,45 @@ export const asyncRoutes = [
           icon: 'home-4-line',
         },
       },
-      {
-        path: 'add',
-        name: 'TrainerAdd',
-        component: () => import('@/views/trainer/add'),
-        meta: {
-          title: '新增培训师',
-          icon: 'home-4-line',
-        },
-      },
+      // {
+      //   path: 'add',
+      //   name: 'TrainerAdd',
+      //   component: () => import('@/views/trainer/add'),
+      //   meta: {
+      //     title: '新增培训师',
+      //     icon: 'home-4-line',
+      //   },
+      // },
     ],
   },
   {
-    path: '/student',
+    path: '/courseSelect',
     component: Layout,
-    redirect: '/student/table',
+    redirect: '/courseSelect/table',
     alwaysShow: true,
     meta: {
-      title: '学员管理',
+      title: '选课管理',
       icon: 'home-4-line',
     },
     children: [
       {
         path: 'table',
-        name: 'StudentTable',
-        component: () => import('@/views/student/table'),
+        name: 'CourseSelectTable',
+        component: () => import('@/views/courseSelect/table'),
         meta: {
-          title: '学员列表',
+          title: '选课列表',
           icon: 'home-4-line',
         },
       },
-      {
-        path: 'add',
-        name: 'StudentAdd',
-        component: () => import('@/views/student/add'),
-        meta: {
-          title: '新增学员',
-          icon: 'home-4-line',
-        },
-      },
+      // {
+      //   path: 'add',
+      //   name: 'StudentAdd',
+      //   component: () => import('@/views/student/add'),
+      //   meta: {
+      //     title: '新增学员',
+      //     icon: 'home-4-line',
+      //   },
+      // },
     ],
   },
   {
@@ -116,6 +116,7 @@ export const asyncRoutes = [
       {
         path: 'table',
         name: 'TrainingClassTable',
+        hidden: true,
         component: () => import('@/views/trainingClass/table'),
         meta: {
           title: '培训班列表',
@@ -127,7 +128,7 @@ export const asyncRoutes = [
         name: 'TrainingClassAdd',
         component: () => import('@/views/trainingClass/add'),
         meta: {
-          title: '培添加训班',
+          title: '添加培训班',
           icon: 'home-4-line',
         },
       },
@@ -235,36 +236,36 @@ export const asyncRoutes = [
       },
     ],
   },
-  {
-    path: '/vab',
-    component: Layout,
-    redirect: '/vab/table',
-    alwaysShow: true,
-    meta: {
-      title: '组件',
-      icon: 'apps-line',
-    },
-    children: [
-      {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/vab/table'),
-        meta: {
-          title: '表格',
-          icon: 'table-2',
-        },
-      },
-      {
-        path: 'icon',
-        name: 'Icon',
-        component: () => import('@/views/vab/icon'),
-        meta: {
-          title: '图标',
-          icon: 'remixicon-line',
-        },
-      },
-    ],
-  },
+  // {
+  //   path: '/vab',
+  //   component: Layout,
+  //   redirect: '/vab/table',
+  //   alwaysShow: true,
+  //   meta: {
+  //     title: '组件',
+  //     icon: 'apps-line',
+  //   },
+  //   children: [
+  //     {
+  //       path: 'table',
+  //       name: 'Table',
+  //       component: () => import('@/views/vab/table'),
+  //       meta: {
+  //         title: '表格',
+  //         icon: 'table-2',
+  //       },
+  //     },
+  //     {
+  //       path: 'icon',
+  //       name: 'Icon',
+  //       component: () => import('@/views/vab/icon'),
+  //       meta: {
+  //         title: '图标',
+  //         icon: 'remixicon-line',
+  //       },
+  //     },
+  //   ],
+  // },
   {
     path: '/user',
     component: Layout,
@@ -285,26 +286,26 @@ export const asyncRoutes = [
       },
     ],
   },
-  {
-    path: '/test',
-    component: Layout,
-    redirect: '/test/test',
-    meta: {
-      title: '动态路由测试',
-      icon: 'test-tube-line',
-    },
-    children: [
-      {
-        path: 'test',
-        name: 'Test',
-        component: () => import('@/views/test'),
-        meta: {
-          title: '动态路由测试',
-          icon: 'test-tube-line',
-        },
-      },
-    ],
-  },
+  // {
+  //   path: '/test',
+  //   component: Layout,
+  //   redirect: '/test/test',
+  //   meta: {
+  //     title: '动态路由测试',
+  //     icon: 'test-tube-line',
+  //   },
+  //   children: [
+  //     {
+  //       path: 'test',
+  //       name: 'Test',
+  //       component: () => import('@/views/test'),
+  //       meta: {
+  //         title: '动态路由测试',
+  //         icon: 'test-tube-line',
+  //       },
+  //     },
+  //   ],
+  // },
   {
     path: '/error',
     name: 'Error',
