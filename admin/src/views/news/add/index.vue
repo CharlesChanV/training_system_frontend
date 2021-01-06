@@ -6,12 +6,6 @@
     <a-form-item label="新闻内容">
       <a-input v-model:value="form.content" />
     </a-form-item>
-    <a-form-item label="新闻关键字">
-      <a-input v-model:value="form.keyword" />
-    </a-form-item>
-    <a-form-item label="联系方式">
-      <a-input v-model:value="form.phone" />
-    </a-form-item>
     <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
       <a-button type="primary" @click="onSubmit">添加</a-button>
       <a-button style="margin-left: 10px">取消</a-button>
@@ -28,8 +22,6 @@
         form: {
           name: '',
           content: '',
-          keyword: '',
-          phone: '',
         },
       }
     },

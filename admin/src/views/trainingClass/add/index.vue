@@ -1,25 +1,22 @@
 <template>
   <a-form :model="form" :label-col="labelCol" :wrapper-col="wrapperCol">
-    <a-form-item label="培训班名称">
-      <a-input v-model:value="form.name" />
-    </a-form-item>
-    <a-form-item label="培训班课程">
-      <a-input v-model:value="form.course" />
-    </a-form-item>
     <a-form-item label="开课时间">
       <a-date-picker
-        v-model:value="form.startTime"
+        v-model:value="form.startDate"
         show-time
         type="date"
         placeholder="选择日期"
         style="width: 100%"
       />
     </a-form-item>
-    <a-form-item label="联系方式">
-      <a-input v-model:value="form.phone" />
+    <a-form-item label="学费">
+      <a-input v-model:value="form.tution" />
     </a-form-item>
-    <a-form-item label="培训班课时">
-      <a-input v-model:value="form.classTimes" />
+    <a-form-item label="教师ID">
+      <a-input v-model:value="form.teacherId" />
+    </a-form-item>
+    <a-form-item label="课程ID">
+      <a-input v-model:value="form.courseId" />
     </a-form-item>
     <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
       <a-button type="primary" @click="onSubmit">添加</a-button>
@@ -35,11 +32,10 @@
         labelCol: { span: 4 },
         wrapperCol: { span: 14 },
         form: {
-          name: '',
-          course: '',
-          startTime: '',
-          phone: '',
-          classTimes: '',
+          startDate: '',
+          tution: '',
+          teacherId: '',
+          courseId: '',
         },
       }
     },

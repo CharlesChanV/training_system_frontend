@@ -12,18 +12,6 @@
         <a-select-option value="2">女</a-select-option>
       </a-select>
     </a-form-item>
-    <a-form-item label="注册时间">
-      <a-date-picker
-        v-model:value="form.registerTime"
-        show-time
-        type="date"
-        placeholder="选择日期"
-        style="width: 100%"
-      />
-    </a-form-item>
-    <a-form-item label="是否全职">
-      <a-switch v-model:checked="form.isFullJob" />
-    </a-form-item>
     <a-form-item label="联系方式">
       <a-input v-model:value="form.phone" type="textarea" />
     </a-form-item>
@@ -47,10 +35,6 @@
           name: '',
           age: '',
           gender: undefined,
-          registerTime: undefined,
-          isFullJob: false,
-          type: [],
-          resource: '',
           phone: '',
           email: '',
         },

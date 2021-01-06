@@ -53,7 +53,7 @@
     { title: '姓名', dataIndex: 'name', key: 'name' },
     { title: '年龄', dataIndex: 'age', key: 'age' },
     { title: '邮箱', dataIndex: 'email', key: 'email' },
-    { title: '邮箱', dataIndex: 'gender', key: 'gender' },
+    { title: '性别', dataIndex: 'gender', key: 'gender' },
     {
       title: '操作',
       dataIndex: '',

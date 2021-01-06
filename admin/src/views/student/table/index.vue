@@ -48,7 +48,7 @@
     { title: '学员姓名', dataIndex: 'name', key: 'name' },
     { title: '学员年龄', dataIndex: 'age', key: 'age' },
     { title: '学员邮箱', dataIndex: 'email', key: 'email' },
-    { title: '学员邮箱', dataIndex: 'gender', key: 'gender' },
+    { title: '学员性别', dataIndex: 'gender', key: 'gender' },
     { title: '听课证持有状态', dataIndex: 'hasCard', key: 'hasCard' },
     {
       title: '操作',
