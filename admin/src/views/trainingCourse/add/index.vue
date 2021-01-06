@@ -1,9 +1,15 @@
 <template>
   <a-form :model="form" :label-col="labelCol" :wrapper-col="wrapperCol">
     <a-form-item label="课程名称">
-      <a-input v-model:value="form.name" />
+      <a-input v-model:value="form.courseName" />
     </a-form-item>
-    <a-form-item label="课程内容">
+    <a-form-item label="季节">
+      <a-input v-model:value="form.season" />
+    </a-form-item>
+    <a-form-item label="年份">
+      <a-input v-model:value="form.year" />
+    </a-form-item>
+    <!-- <a-form-item label="课程内容">
       <a-input v-model:value="form.content" />
     </a-form-item>
     <a-form-item label="课程老师">
@@ -23,7 +29,7 @@
     </a-form-item>
     <a-form-item label="联系方式">
       <a-input v-model:value="form.phone" />
-    </a-form-item>
+    </a-form-item> -->
     <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
       <a-button type="primary" @click="onSubmit">添加</a-button>
       <a-button style="margin-left: 10px">取消</a-button>
@@ -38,7 +44,9 @@
         labelCol: { span: 4 },
         wrapperCol: { span: 14 },
         form: {
-          name: '',
+          courseName: '',
+          season: '',
+          year: '',
           content: '',
           teacher: '',
           courseTimes: '',

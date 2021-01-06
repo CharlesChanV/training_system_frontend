@@ -2,10 +2,10 @@
   <div class="test-container">
     <a-alert message="课程列表"></a-alert>
     <a-table :columns="columns" :data-source="data">
-      <template #canChoose="{ record }">
+      <template #isOpen="{ record }">
         <span>
-          <a-tag :color="chooseTagIndex[record.canChoose].color">
-            {{ chooseTagIndex[record.canChoose].value }}
+          <a-tag :color="chooseTagIndex[record.isOpen].color">
+            {{ chooseTagIndex[record.isOpen].value }}
           </a-tag>
         </span>
       </template>
@@ -34,17 +34,16 @@
 <script>
   import { message } from 'ant-design-vue'
   const columns = [
-    { title: '编号', dataIndex: 'No', key: 'No' },
-    { title: '课程名称', dataIndex: 'name', key: 'name' },
-    { title: '课程内容', dataIndex: 'content', key: 'content' },
-    { title: '课程老师', dataIndex: 'teacher', key: 'teacher' },
-    { title: '课程学时', dataIndex: 'times', key: 'times' },
+    { title: 'ID', dataIndex: 'id', key: 'id' },
+    { title: '课程名称', dataIndex: 'courseName', key: 'courseName' },
     {
-      title: '选课状态',
-      dataIndex: 'canChoose',
-      key: 'canChoose',
-      slots: { customRender: 'canChoose' },
+      title: '开放选课',
+      dataIndex: 'isOpen',
+      key: 'isOpen',
+      slots: { customRender: 'isOpen' },
     },
+    { title: '季节', dataIndex: 'season', key: 'season' },
+    { title: '学年', dataIndex: 'year', key: 'year' },
     {
       title: '操作',
       dataIndex: '',

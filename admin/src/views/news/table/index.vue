@@ -2,10 +2,10 @@
   <div class="test-container">
     <a-alert message="新闻列表"></a-alert>
     <a-table :columns="columns" :data-source="data">
-      <template #tags="{ record }">
+      <template #isRelease="{ record }">
         <span>
-          <a-tag :color="publishTagIndex[record.isPublish].color">
-            {{ publishTagIndex[record.isPublish].value }}
+          <a-tag :color="publishTagIndex[record.isRelease].color">
+            {{ publishTagIndex[record.isRelease].value }}
           </a-tag>
         </span>
       </template>
@@ -13,8 +13,8 @@
         <span>
           <a>编辑</a>
           <a-divider type="vertical" />
-          <a @click="publish(record, record.isPublish)">
-            {{ record.isPublish == 0 ? '发布' : '取消发布' }}
+          <a @click="publish(record, record.isRelease)">
+            {{ record.isRelease == 0 ? '发布' : '取消发布' }}
           </a>
           <a-divider type="vertical" />
           <a @click="deleteNews(record)">删除</a>
@@ -38,16 +38,16 @@
 <script>
   import { message } from 'ant-design-vue'
   const columns = [
-    { title: '编号', dataIndex: 'No', key: 'No' },
+    { title: 'ID', dataIndex: 'id', key: 'id' },
     { title: '新闻主题', dataIndex: 'title', key: 'title' },
     { title: '新闻内容', dataIndex: 'content', key: 'content' },
-    { title: '新闻关键字', dataIndex: 'keyword', key: 'keyword' },
-    { title: '新闻发布时间', dataIndex: 'publishTime', key: 'publishTime' },
+    { title: '新闻创建时间', dataIndex: 'createTime', key: 'createTime' },
+    { title: '新闻发布时间', dataIndex: 'updateTime', key: 'updateTime' },
     {
       title: '新闻发布',
-      dataIndex: 'isPublish',
-      key: 'isPublish',
-      slots: { customRender: 'tags' },
+      dataIndex: 'isRelease',
+      key: 'isRelease',
+      slots: { customRender: 'isRelease' },
     },
     {
       title: '操作',
@@ -65,7 +65,7 @@
       content: '新闻内容1',
       keyword: '新闻关键字1',
       publishTime: '2020-12-17 09:35:00',
-      isPublish: 1,
+      isRelease: 1,
       description: '额外信息',
     },
     {
@@ -75,7 +75,7 @@
       content: '新闻内容2',
       keyword: '新闻关键字2',
       publishTime: '2020-12-17 09:36:00',
-      isPublish: 1,
+      isRelease: 1,
       description: '额外信息',
     },
     {
@@ -85,7 +85,7 @@
       content: '新闻内容3',
       keyword: '新闻关键字3',
       publishTime: '2020-12-17 09:37:00',
-      isPublish: 0,
+      isRelease: 0,
       description: '额外信息',
     },
   ]
@@ -119,12 +119,12 @@
           }
         }
       },
-      publish(record, isPublish) {
+      publish(record, isRelease) {
         console.log(record)
-        if (isPublish == 1) {
-          this.data[record.key - 1].isPublish = 0
+        if (isRelease == 1) {
+          this.data[record.key - 1].isRelease = 0
         } else {
-          this.data[record.key - 1].isPublish = 1
+          this.data[record.key - 1].isRelease = 1
         }
         message.success('操作成功')
       },

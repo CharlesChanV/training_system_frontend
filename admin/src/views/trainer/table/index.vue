@@ -47,11 +47,13 @@
 <script>
   import { message } from 'ant-design-vue'
   const columns = [
-    { title: '编号', dataIndex: 'No', key: 'No' },
+    { title: 'ID', dataIndex: 'id', key: 'id' },
+    { title: '用户名', dataIndex: 'username', key: 'username' },
+    { title: '联系方式', dataIndex: 'phone', key: 'phone' },
     { title: '姓名', dataIndex: 'name', key: 'name' },
     { title: '年龄', dataIndex: 'age', key: 'age' },
-    { title: '联系方式', dataIndex: 'phone', key: 'phone' },
     { title: '邮箱', dataIndex: 'email', key: 'email' },
+    { title: '邮箱', dataIndex: 'gender', key: 'gender' },
     {
       title: '操作',
       dataIndex: '',

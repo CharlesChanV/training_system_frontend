@@ -19,11 +19,12 @@
 <script>
   import { message } from 'ant-design-vue'
   const columns = [
-    { title: '编号', dataIndex: 'No', key: 'No' },
-    { title: '培训班名称', dataIndex: 'className', key: 'className' },
-    { title: '培训时间', dataIndex: 'classTime', key: 'classTime' },
-    { title: '培训班老师', dataIndex: 'classTeacher', key: 'classTeacher' },
-    { title: '培训班学时', dataIndex: 'classTimes', key: 'classTimes' },
+    { title: 'ID', dataIndex: 'No', key: 'No' },
+    { title: '开始时间', dataIndex: 'startDate', key: 'startDate' },
+    { title: '老师ID', dataIndex: 'teacherId', key: 'teacherId' },
+    { title: '课程ID', dataIndex: 'courseId', key: 'courseId' },
+    { title: '是否发布培训信息', dataIndex: 'isAnnounce', key: 'isAnnounce' },
+    { title: '学费', dataIndex: 'tution', key: 'tution' },
     {
       title: '操作',
       dataIndex: '',
